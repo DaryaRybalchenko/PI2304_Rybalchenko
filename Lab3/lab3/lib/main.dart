@@ -45,6 +45,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void incrementClear() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,6 +83,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: const Color.fromARGB(255, 153, 175, 76),
                 ),
               ],
+            ),
+            TextButton(
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(
+                  const Color.fromARGB(255, 78, 62, 221),
+                ),
+                overlayColor: MaterialStateProperty.resolveWith(
+                  (states) => states.contains(MaterialState.pressed)
+                      ? Colors.grey.shade200
+                      : null,
+                ),
+                backgroundColor: MaterialStateProperty.all(
+                  const Color.fromARGB(0, 110, 198, 241),
+                ),
+              ),
+              onPressed: incrementClear,
+              child: Text('Сбросить'),
             ),
           ],
         ),
